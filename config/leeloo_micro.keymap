@@ -163,7 +163,7 @@
                       &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp MPPAU
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         colemak_layer {
@@ -175,7 +175,7 @@
                       &trans     &trans     &trans        &trans      &trans     &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
         
         gamepad_layer {
@@ -187,7 +187,7 @@
                       &kp TAB  &kp SPACE  &kp LSHIFT  &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         raise_layer {
@@ -199,7 +199,7 @@
                       &trans     &trans     &kp BSPC   &trans     &trans     &trans     &kp N0     &kp DOT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         lower_layer {
@@ -211,7 +211,7 @@
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         adjust_layer {
@@ -224,7 +224,7 @@
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
     };
