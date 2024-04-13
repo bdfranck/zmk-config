@@ -9,14 +9,14 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Layers
-#define QW_M    0       // QWERTY
-#define QW_C    1       // Colemak
-#define QW_G    2       // Gamepad
-#define QW_R    3       // Raise
-#define QW_L    4       // Lower
-#define QW_A    5       // Adjust
-
-
+#define QM_M    0       // QWERTY - Mac
+#define QW_M    1       // QWERTY - Win
+#define CM_M    2       // Colemak - Mac
+#define CW_M    3       // Colemak - Win
+#define QW_G    4       // Gamepad
+#define QW_R    5       // Raise
+#define QW_L    6       // Lower
+#define QW_A    7       // Adjust
 
 // Short versions
 #define GUIGRV      LGUI GRAVE
@@ -155,36 +155,60 @@
     keymap {
         compatible = "zmk,keymap";
 
-        qwerty_layer {
-            label = " QWERTY";
+        qwerty_mac_layer {
+            label = "Mac QWE";
             bindings = <
 &tdx_Q     &kp W      &kp E      &kp R      &kp T                                &kp Y          &kp U      &kp I      &kp O      &kp P
 &kp A      &kp S      &kp D      &kp F      &kp G                                &kp H          &kp J      &kp K      &kp L      &kp SEMI
-&mt LSFT Z &kp X      &kp C      &kp V      &kp B         &kp ESC     &mt GUIGRV &kp N          &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
-                      &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp END
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        colemak_layer {
-            label = " Colemak";
-            bindings = <
-&trans     &trans     &kp F      &kp P      &kp B                                &kp J       &kp L      &kp U      &kp Y      &kp SEMI
-&trans     &kp R      &kp S      &kp T      &trans                               &kp M       &kp N      &kp E      &kp I      &kp O
-&trans     &trans     &trans     &kp D      &kp V         &trans      &trans     &kp K       &kp H      &trans     &trans     &trans
-                      &trans     &trans     &trans        &trans      &trans     &trans      &trans     &trans
+&mt LSFT Z &kp X      &kp C      &kp V      &kp B         &kp ESC   &mt CTLGRV   &kp N          &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
+                      &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LGUI  &kp RALT     &lt QW_R SPACE &kp RET    &kp END
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
         };
         
+        qwerty_win_layer {
+            label = "Win QWE";
+            bindings = <
+&trans     &trans     &trans      &trans      &trans                              &trans         &trans     &trans     &trans     &trans
+&trans     &trans     &trans      &trans      &trans                              &trans         &trans     &trans     &trans     &trans
+&trans     &trans     &trans      &trans      &trans        &trans    &mt LGUI    &trans         &trans     &trans     &trans     &trans
+                      &trans      &trans      &trans        &kp LCTRL &trans      &trans         &trans     &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        colemak_mac_layer {
+            label = "Mac Col";
+            bindings = <
+&trans     &trans     &kp F      &kp P      &kp B                                &kp J       &kp L      &kp U      &kp Y      &kp SEMI
+&trans     &kp R      &kp S      &kp T      &trans                               &kp M       &kp N      &kp E      &kp I      &kp O
+&trans     &trans     &trans     &kp D      &kp V         &trans      &mt CTLGRV &kp K       &kp H      &trans     &trans     &trans
+                      &trans     &trans     &trans        &kp LGUI    &trans     &trans      &trans     &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };
+
+        colemak_win_layer {
+            label = "Win Col";
+            bindings = <
+&trans     &trans     &trans      &trans      &trans                              &trans         &trans     &trans     &trans     &trans
+&trans     &trans     &trans      &trans      &trans                              &trans         &trans     &trans     &trans     &trans
+&trans     &trans     &trans      &trans      &trans        &trans    &mt LGUI    &trans         &trans     &trans     &trans     &trans
+                      &trans      &trans      &trans        &kp LCTRL &trans      &trans         &trans     &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+        };        
+        
         gamepad_layer {
-            label = " Gaming";
+            label = "Gameing";
             bindings = <
 &kp Q      &kp W      &kp E    &kp R      &kp T                               &kp Y          &kp U      &kp I      &kp O      &kp P
 &kp A      &kp S      &kp D    &kp F      &kp G                               &kp H          &kp J      &kp K      &kp L      &kp SEMI
-&kp Z      &kp X      &kp C    &kp V      &kp B       &mt TBESC  &mt GUIGRV   &kp N          &kp M      &kp COMMA  &kp DOT    &kp FSLH
+&kp Z      &kp X      &kp C    &kp V      &kp B       &mt TBESC  &mt LGUI     &kp N          &kp M      &kp COMMA  &kp DOT    &kp FSLH
                       &kp RET  &kp LSHIFT &kp SPACE   &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
             >;
 
@@ -208,7 +232,7 @@
             bindings = <
 &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4                          &trans     &tdw_LRP   &tdx_LRB   &tdx_LRR   &trans
 &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                        &kp CARET  &kp AMPS   &kp ASTRK  &kp DQT    &kp QUOT
-&trans     &to QW_G   &to QW_C   &to QW_M   &trans     &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
+&to CW_M   &to CM_M   &to QW_M   &to QM_M   &to QW_G   &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
