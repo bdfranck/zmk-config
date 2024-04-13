@@ -22,6 +22,7 @@
 #define GUIGRV      LGUI GRAVE
 #define CTLGRV      LCTRL GRAVE
 #define SPTB        SPACE TAB
+#define TBESC       TAB ESC
 #define WIN_SC      LG(LS(S))
 
 #define enDSH_X     LA(MINUS)
@@ -183,11 +184,11 @@
             bindings = <
 &kp Q      &kp W      &kp E    &kp R      &kp T                               &kp Y          &kp U      &kp I      &kp O      &kp P
 &kp A      &kp S      &kp D    &kp F      &kp G                               &kp H          &kp J      &kp K      &kp L      &kp SEMI
-&kp Z      &kp X      &kp C    &kp V      &kp B       &kp ESC    &mt GUIGRV   &kp N          &kp M      &kp COMMA  &kp DOT    &kp FSLH
-                      &kp TAB  &kp LSHIFT &kp SPACE   &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
+&kp Z      &kp X      &kp C    &kp V      &kp B       &mt TBESC  &mt GUIGRV   &kp N          &kp M      &kp COMMA  &kp DOT    &kp FSLH
+                      &kp RET  &kp LSHIFT &kp SPACE   &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp PG_UP PG_DN>;
         };
 
         raise_layer {
