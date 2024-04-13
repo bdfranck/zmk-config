@@ -9,10 +9,11 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Layers
-#define QW_M    0       // Main
+#define QW_M    0       // Main - QWERTY
 #define QW_R    1       // Raise
 #define QW_L    2       // Lower
 #define QW_A    3       // Adjust
+#define QW_C    4       // Colemak
 
 
 // Short versions
@@ -154,10 +155,10 @@
         default_layer {
             label = " QWERTY";
             bindings = <
-&tdx_Q     &kp W      &kp E      &kp R      &kp T                             &kp Y      &kp U      &kp I      &kp O      &kp P
-&kp A      &kp S      &kp D      &kp F      &kp G                             &kp H      &kp J      &kp K      &kp L      &kp SEMI
-&mt LSFT Z &kp X      &kp C      &kp V      &kp B     &kp ESC     &mt GUIGRV  &kp N      &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
-                      &kp VOLMT  &mt SPTB  &lt 2 BSPC  &kp LCTRL  &kp RALT  &lt 1 SPACE  &kp RET  &kp MPPAU
+&tdx_Q     &kp W      &kp E      &kp R      &kp T                            &kp Y       &kp U      &kp I      &kp O      &kp P
+&kp A      &kp S      &kp D      &kp F      &kp G                            &kp H       &kp J      &kp K      &kp L      &kp SEMI
+&mt LSFT Z &kp X      &kp C      &kp V      &kp B     &kp ESC     &mt GUIGRV &kp N       &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
+                      &kp VOLMT  &mt SPTB  &lt 2 BSPC  &kp LCTRL  &kp RALT   &lt 1 SPACE &kp RET    &kp MPPAU
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
@@ -180,7 +181,7 @@
             bindings = <
 &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4                          &trans     &tdw_LRP   &tdx_LRB   &tdx_LRR   &trans
 &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                        &kp CARET  &kp AMPS   &kp ASTRK  &kp DQT    &kp QUOT
-&trans     &bt BT_CLR &trans     &trans     &trans     &kp LOCK   &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
+&trans     &trans     &tog 4     &tog 0     &trans     &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
@@ -195,6 +196,18 @@
 &kp F6     &kp F7     &kp F8     &kp F9     &kp F10                          &trans     &trans     &kp VOLDN  &trans     &trans
 &kp F11    &kp F12    &trans     &trans     &trans     &trans     &trans     &trans     &kp VOLMT  &trans     &trans     &trans
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+        };
+
+        colemak_layer {
+            label = " Colemak";
+            bindings = <
+&trans     &trans     &kp F      &kp P      &kp B                            &kp J       &kp L      &kp U      &kp Y      &kp SEMI
+&trans     &kp R      &kp S      &kp T      &trans                           &kp M       &kp N      &kp E      &kp I      &kp O
+&trans     &trans     &trans     &kp D      &kp V     &kp ESC     &mt GUIGRV &kp K       &kp H      &trans     &trans     &trans
+                      &trans     &trans     &trans    &trans      &trans     &trans      &trans     &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
