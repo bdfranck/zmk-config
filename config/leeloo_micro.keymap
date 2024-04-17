@@ -9,13 +9,12 @@
 #include <dt-bindings/zmk/bt.h>
 
 // Layers
-#define QW_M    0       // QWERTY - Windows
-#define QM_M    1       // QWERTY - Mac
-#define CW_M    2       // Colemak - Windows
-#define QW_G    3       // Gamepad
-#define QW_R    4       // Raise
-#define QW_L    5       // Lower
-#define QW_A    6       // Adjust
+#define QW_M    0       // QWERTY
+#define QW_C    1       // Colemak
+#define QW_G    2       // Gamepad
+#define QW_R    3       // Raise
+#define QW_L    4       // Lower
+#define QW_A    5       // Adjust
 
 
 
@@ -157,24 +156,12 @@
         compatible = "zmk,keymap";
 
         qwerty_layer {
-            label = "QWE Win";
+            label = " QWERTY";
             bindings = <
 &tdx_Q     &kp W      &kp E      &kp R      &kp T                                &kp Y          &kp U      &kp I      &kp O      &kp P
 &kp A      &kp S      &kp D      &kp F      &kp G                                &kp H          &kp J      &kp K      &kp L      &kp SEMI
-&mt LSFT Z &kp X      &kp C      &kp V      &kp B         &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
+&mt LSFT Z &kp X      &kp C      &kp V      &kp B         &kp ESC     &mt GUIGRV &kp N          &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
                       &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp END
-            >;
-
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
-        };
-
-        qwerty_layer {
-            label = "QWE Mac";
-            bindings = <
-&trans     &trans     &trans     &trans     &trans                              &trans         &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans                              &trans         &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans        &trans     &kp CTLGRV &trans         &trans     &trans     &trans     &trans
-                      &trans     &trans     &lt QW_L BSPC &kp LGUI   &trans     &lt QW_R SPACE &trans
             >;
 
             sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
@@ -221,7 +208,7 @@
             bindings = <
 &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4                          &trans     &tdw_LRP   &tdx_LRB   &tdx_LRR   &trans
 &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                        &kp CARET  &kp AMPS   &kp ASTRK  &kp DQT    &kp QUOT
-&trans     &to CW_M   &to QW_M   &to QM_M   &to QW_G     &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
+&trans     &to QW_G   &to QW_C   &to QW_M   &trans     &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
