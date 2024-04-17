@@ -12,10 +12,11 @@
 #define QW_M    0       // QWERTY - Windows
 #define QM_M    1       // QWERTY - Mac
 #define CW_M    2       // Colemak - Windows
-#define QW_G    3       // Gamepad
-#define QW_R    4       // Raise
-#define QW_L    5       // Lower
-#define QW_A    6       // Adjust
+#define CM_M    3       // Colemak - Mac
+#define QW_G    4       // Gamepad
+#define QW_R    5       // Raise
+#define QW_L    6       // Lower
+#define QW_A    7       // Adjust
 
 
 
@@ -165,33 +166,45 @@
                       &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp END
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
         qwerty_mac_layer {
             label = "QWE Mac";
             bindings = <
-&trans     &trans     &trans     &trans     &trans                              &trans         &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans                              &trans         &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans        &trans     &kp CTLGRV &trans         &trans     &trans     &trans     &trans
-                      &trans     &trans     &lt QW_L BSPC &kp LGUI   &trans     &lt QW_R SPACE &trans
+&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans      &trans     &kp CTLGRV   &trans     &trans     &trans     &trans     &trans
+                      &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
         colemak_win_layer {
-            label = "Colemak";
+            label = "Col Win";
             bindings = <
 &trans     &trans     &kp F      &kp P      &kp B                                &kp J       &kp L      &kp U      &kp Y      &kp SEMI
 &trans     &kp R      &kp S      &kp T      &trans                               &kp M       &kp N      &kp E      &kp I      &kp O
-&trans     &trans     &trans     &kp D      &kp V         &trans      &trans     &kp K       &kp H      &trans     &trans     &trans
-                      &trans     &trans     &trans        &trans      &trans     &trans      &trans     &trans
+&trans     &trans     &trans     &kp D      &kp V       &trans      &mt GUIGRV   &kp K       &kp H      &trans     &trans     &trans
+                      &trans     &trans     &trans      &kp LCTRL   &trans       &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
-        
+
+        colemak_mac_layer {
+            label = "Col Mac";
+            bindings = <
+&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans      &trans     &kp CTLGRV   &trans     &trans     &trans     &trans     &trans
+                      &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
+            >;
+
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+        };
+                
         gamepad_layer {
             label = "Gampad";
             bindings = <
@@ -201,7 +214,7 @@
                       &kp RET  &kp LSHIFT &kp SPACE   &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
             >;
 
-            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp PG_DN PG_UP>;
         };
 
         raise_layer {
@@ -213,7 +226,7 @@
                       &trans     &trans     &kp BSPC   &trans     &trans     &trans     &kp N0     &kp DOT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
         lower_layer {
@@ -221,11 +234,11 @@
             bindings = <
 &bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4                          &trans     &tdw_LRP   &tdx_LRB   &tdx_LRR   &trans
 &kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                        &kp CARET  &kp AMPS   &kp ASTRK  &kp DQT    &kp QUOT
-&trans     &to CW_M   &to QW_M   &to QM_M   &to QW_G     &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
+&to CW_M   &to CM_M   &to QW_M   &to QM_M   &to QW_G   &bt BT_CLR &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
         adjust_layer {
@@ -238,7 +251,7 @@
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN &inc_dec_kp PG_UP PG_DN>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
         };
 
     };
