@@ -23,6 +23,8 @@
 // Short versions
 #define GUIGRV      LGUI GRAVE
 #define CTLGRV      LCTRL GRAVE
+#define ZSHIFT      LSFT Z
+#define SLHSHIFT    RSFT FSLH
 #define SPTB        SPACE TAB
 #define TBESC       TAB ESC
 #define WIN_SC      LG(LS(S))
@@ -162,7 +164,7 @@
             bindings = <
 &tdx_Q     &kp W      &kp E      &kp R      &kp T                                &kp Y          &kp U      &kp I      &kp O      &kp P
 &kp A      &kp S      &kp D      &kp F      &kp G                                &kp H          &kp J      &kp K      &kp L      &kp SEMI
-&mt LSFT Z &kp X      &kp C      &kp V      &kp B         &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
+&mt ZSHIFT &kp X      &kp C      &kp V      &kp B         &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt SLHSHIFT
                       &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp END
             >;
 
@@ -174,7 +176,7 @@
             bindings = <
 &trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
 &trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans      &trans     &kp CTLGRV   &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans      &trans     &mt CTLGRV   &trans     &trans     &trans     &trans     &trans
                       &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
             >;
 
@@ -198,7 +200,7 @@
             bindings = <
 &trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
 &trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans      &trans     &kp CTLGRV   &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans      &trans     &mt CTLGRV   &trans     &trans     &trans     &trans     &trans
                       &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
             >;
 
