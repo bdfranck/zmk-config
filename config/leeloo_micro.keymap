@@ -168,7 +168,7 @@
                       &kp VOLMT  &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp END
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
 
         qm_layer {
@@ -180,7 +180,7 @@
                       &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
 
         cw_layer {
@@ -192,19 +192,19 @@
                       &trans     &trans     &trans      &kp LCTRL   &trans       &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
 
         cm_layer {
             label = "Col Mac";
             bindings = <
-&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans      &trans     &mt CTLGRV   &trans     &trans     &trans     &trans     &trans
-                      &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
+&trans     &trans     &kp F      &kp P      &kp B                                &kp J       &kp L      &kp U      &kp Y      &kp SEMI
+&trans     &kp R      &kp S      &kp T      &trans                               &kp M       &kp N      &kp E      &kp I      &kp O
+&trans     &trans     &trans     &kp D      &kp V       &trans     &mt CTLGRV    &kp K       &kp H      &trans     &trans     &trans
+                      &trans     &trans     &trans      &kp LGUI   &trans        &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
                 
         gamepad_layer {
@@ -216,7 +216,7 @@
                       &kp RET  &kp LSHIFT &kp SPACE   &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
             >;
 
-            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp PG_UP PG_DN>;
         };
 
         raise_layer {
@@ -228,7 +228,7 @@
                       &trans     &trans     &kp BSPC   &trans     &trans     &trans     &kp N0     &kp DOT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
 
         lower_layer {
@@ -240,7 +240,7 @@
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
 
         adjust_layer {
@@ -253,7 +253,7 @@
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_DN PG_UP>;
+            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP &inc_dec_kp PG_UP PG_DN>;
         };
 
     };
