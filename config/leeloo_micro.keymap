@@ -13,7 +13,7 @@
 #define QM_M    1       // QWERTY - Mac
 #define CW_M    2       // Colemak - Windows
 #define CM_M    3       // Colemak - Mac
-#define QW_G    4       // Gamepad
+#define QW_G    4       // Gamepad - Windows
 #define QW_R    5       // Raise
 #define QW_L    6       // Lower
 #define QW_A    7       // Adjust
