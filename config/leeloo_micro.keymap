@@ -176,7 +176,7 @@
                       &mkp MB1   &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &mkp MB2
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         qm_layer {
@@ -188,7 +188,7 @@
                       &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         cw_layer {
@@ -200,7 +200,7 @@
                       &trans     &trans     &trans      &kp LCTRL   &trans       &trans      &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         cm_layer {
@@ -212,7 +212,7 @@
                       &trans     &trans     &trans      &kp LGUI   &trans        &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
                 
         gamepad_layer {
@@ -236,7 +236,7 @@
                       &trans     &trans     &kp BSPC   &trans     &trans     &trans     &kp N0     &kp DOT
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         lower_layer {
@@ -248,7 +248,7 @@
                       &trans         &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         adjust_layer {
@@ -261,7 +261,7 @@
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
     };
