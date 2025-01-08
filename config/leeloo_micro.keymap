@@ -49,7 +49,7 @@
 #define ALTR    LA(RIGHT)
 #define LOCK    LG(L)
 
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 20
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 140
 
 /* 
  * Assign the cs-gpios pin to 4.
