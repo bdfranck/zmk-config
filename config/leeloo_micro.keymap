@@ -173,7 +173,7 @@
 &tdx_Q     &kp W      &kp E      &kp R      &kp T                                &kp Y          &kp U      &kp I      &kp O      &kp P
 &kp A      &kp S      &kp D      &kp F      &kp G                                &kp H          &kp J      &kp K      &kp L      &kp SEMI
 &mt ZSHIFT &kp X      &kp C      &kp V      &kp B         &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt SLHSHIFT
-                      &mkp MB3   &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp K_MUTE
+                      &mkp MB3   &mt SPTB   &lt QW_L BSPC &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp VOLMT
             >;
 
             sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
