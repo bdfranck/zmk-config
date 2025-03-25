@@ -17,8 +17,9 @@
 #define CM_M    3       // Colemak - Mac
 #define QW_G    4       // Gamepad - Windows
 #define QW_R    5       // Raise
-#define QW_L    6       // Lower
-#define QW_A    7       // Adjust
+#define QW_LW   6       // Lower - Windows
+#define QW_LM   7       // Lower - Mac
+#define QW_A    8       // Adjust
 
 // Short versions
 #define GUIGRV      LGUI GRAVE
@@ -63,8 +64,14 @@
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
+        
         adjust_win_layer {
-            if-layers = <QW_R QW_L>;
+            if-layers = <QW_R QW_LW>;
+            then-layer = <QW_A>;
+        };
+        
+        adjust_mac_layer {
+            if-layers = <QW_R QW_LM>;
             then-layer = <QW_A>;
         };
     };
@@ -171,10 +178,10 @@
         qw_layer {
             label = "QW Win";
             bindings = <
-&tdx_Q     &kp W      &kp E      &kp R      &kp T                               &kp Y          &kp U      &kp I      &kp O      &kp P
-&kp A      &kp S      &kp D      &kp F      &kp G                               &kp H          &kp J      &kp K      &kp L      &kp SEMI
-&mt ZSHIFT &kp X      &kp C      &kp V      &kp B        &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt SLHSHIFT
-                      &mkp MB3   &kp BSPC   &lt QW_L TAB &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp VOLMT
+&tdx_Q     &kp W      &kp E      &kp R      &kp T                                &kp Y          &kp U      &kp I      &kp O      &kp P
+&kp A      &kp S      &kp D      &kp F      &kp G                                &kp H          &kp J      &kp K      &kp L      &kp SEMI
+&mt ZSHIFT &kp X      &kp C      &kp V      &kp B         &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt SLHSHIFT
+                      &mkp MB3   &kp BSPC   &lt QW_LW TAB &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp VOLMT
             >;
 
             sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -183,10 +190,10 @@
         qm_layer {
             label = "QW Mac";
             bindings = <
-&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans                              &trans     &trans     &trans     &trans     &trans
-&trans     &trans     &trans     &trans     &trans      &trans     &mt CTLGRV   &trans     &trans     &trans     &trans     &trans
-                      &trans     &trans     &trans      &kp LGUI   &trans       &trans     &trans
+&trans     &trans     &trans     &trans     &trans                                &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans                                &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans        &trans     &mt CTLGRV   &trans     &trans     &trans     &trans     &trans
+                      &trans     &trans     &lt QW_LM TAB &kp LGUI   &trans       &trans     &trans
             >;
 
             sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
@@ -240,12 +247,24 @@
             sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        lower_layer {
+        lower_win_layer {
             label = "Lower";
             bindings = <
 &trans     &trans     &msc SCRL_UP   &kp WIN_SC &trans                           &tdx_LRR     &kp AMPS   &kp ASTRK  &trans      &kp DQT
 &trans     &mkp RCLK  &msc SCRL_DOWN &mkp LCLK  &trans                           &tdw_LRP     &kp DLLR   &kp PRCNT  &kp CARET   &kp QUOT
-&trans     &trans     &trans         &kp MAC_SC &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
+&trans     &trans     &trans         &trans     &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
+                      &trans         &trans     &trans     &trans     &trans     &trans     &trans     &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_mac_layer {
+            label = "Lower";
+            bindings = <
+&trans     &trans     &msc SCRL_UP   &kp MAC_SC &trans                           &tdx_LRR     &kp AMPS   &kp ASTRK  &trans      &kp DQT
+&trans     &mkp RCLK  &msc SCRL_DOWN &mkp LCLK  &trans                           &tdw_LRP     &kp DLLR   &kp PRCNT  &kp CARET   &kp QUOT
+&trans     &trans     &trans         &trans     &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
                       &trans         &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
