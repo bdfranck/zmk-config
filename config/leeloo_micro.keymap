@@ -27,7 +27,8 @@
 #define SLHSHIFT    RSFT FSLH
 #define SPTB        SPACE TAB
 #define TBESC       TAB ESC
-#define WIN_SC      LG(LS(S))  
+#define WIN_SC      LG(LS(S))
+#define MAC_SC      LG(LC(LS(4)))
 
 #define enDSH_X     LA(MINUS)
 #define emDSH_X     LS(LA(MINUS))
@@ -244,7 +245,7 @@
             bindings = <
 &trans     &trans     &msc SCRL_UP   &kp WIN_SC &trans                           &tdx_LRR     &kp AMPS   &kp ASTRK  &trans      &kp DQT
 &trans     &mkp RCLK  &msc SCRL_DOWN &mkp LCLK  &trans                           &tdw_LRP     &kp DLLR   &kp PRCNT  &kp CARET   &kp QUOT
-&trans     &trans     &trans         &trans     &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
+&trans     &trans     &trans         &kp MAC_SC &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
                       &trans         &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
