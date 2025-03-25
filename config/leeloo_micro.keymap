@@ -28,7 +28,7 @@
 #define SPTB        SPACE TAB
 #define TBESC       TAB ESC
 #define WIN_SC      LG(LS(S))
-#define MAC_SC      LG(LC(LS(4)))
+#define MAC_SC      LG(LC(LS(N4)))
 
 #define enDSH_X     LA(MINUS)
 #define emDSH_X     LS(LA(MINUS))
