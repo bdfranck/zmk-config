@@ -4,22 +4,32 @@
  */
 
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/pointing.h>
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/mouse.h>
 
 // Layers
-#define QW_M    0       // Main
-#define QW_R    1       // Raise
-#define QW_L    2       // Lower
-#define QW_A    3       // Adjust
-
+#define QW_M    0       // QWERTY - Windows
+#define QM_M    1       // QWERTY - Mac
+#define CW_M    2       // Colemak - Windows
+#define CM_M    3       // Colemak - Mac
+#define QW_G    4       // Gamepad - Windows
+#define QW_R    5       // Raise
+#define QW_LW   6       // Lower - Windows
+#define QW_LM   7       // Lower - Mac
+#define QW_A    8       // Adjust
 
 // Short versions
 #define GUIGRV      LGUI GRAVE
 #define CTLGRV      LCTRL GRAVE
+#define ZSHIFT      LSFT Z
+#define SLHSHIFT    RSFT FSLH
 #define SPTB        SPACE TAB
+#define TBESC       TAB ESC
 #define WIN_SC      LG(LS(S))
+#define MAC_SC      LG(LC(LS(N4)))
 
 #define enDSH_X     LA(MINUS)
 #define emDSH_X     LS(LA(MINUS))
@@ -41,6 +51,7 @@
 #define ALTR    LA(RIGHT)
 #define LOCK    LG(L)
 
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 140
 
 /* 
  * Assign the cs-gpios pin to 4.
@@ -53,9 +64,15 @@
 / {
     conditional_layers {
         compatible = "zmk,conditional-layers";
+        
         adjust_win_layer {
-            if-layers = <1 2>;
-            then-layer = <3>;
+            if-layers = <QW_R QW_LW>;
+            then-layer = <QW_A>;
+        };
+        
+        adjust_mac_layer {
+            if-layers = <QW_R QW_LM>;
+            then-layer = <QW_A>;
         };
     };
 
@@ -146,58 +163,125 @@
             tapping-term-ms = <200>;
             bindings = <&kp LT>, <&kp GT>;
         };
+
+        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+	        compatible = "zmk,behavior-sensor-rotate";
+	        #sensor-binding-cells = <0>;
+            tap-ms = <20>;
+            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
+};
     };
 
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
-            label = " QWERTY";
+        qw_layer {
+            label = "QW Win";
             bindings = <
-&tdx_Q     &kp W      &kp E      &kp R      &kp T                             &kp Y      &kp U      &kp I      &kp O      &kp P
-&kp A      &kp S      &kp D      &kp F      &kp G                             &kp H      &kp J      &kp K      &kp L      &kp SEMI
-&mt LSFT Z &kp X      &kp C      &kp V      &kp B     &kp ESC     &mt GUIGRV  &kp N      &kp M      &kp COMMA  &kp DOT    &mt RSFT FSLH
-                      &kp VOLMT  &mt SPTB  &lt 2 BSPC  &kp LCTRL  &kp RALT  &lt 1 SPACE  &kp RET  &kp MPPAU
+&tdx_Q     &kp W      &kp E      &kp R      &kp T                                &kp Y          &kp U      &kp I      &kp O      &kp P
+&kp A      &kp S      &kp D      &kp F      &kp G                                &kp H          &kp J      &kp K      &kp L      &kp SEMI
+&mt ZSHIFT &kp X      &kp C      &kp V      &kp B         &kp ESC    &mt GUIGRV  &kp N          &kp M      &kp COMMA  &kp DOT    &mt SLHSHIFT
+                      &mkp MB3   &kp BSPC   &lt QW_LW TAB &kp LCTRL  &kp RALT    &lt QW_R SPACE &kp RET    &kp VOLMT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        qm_layer {
+            label = "QW Mac";
+            bindings = <
+&trans     &trans     &trans     &trans     &trans                                &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans                                &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &trans     &trans     &trans        &trans     &mt CTLGRV   &trans     &trans     &trans     &trans     &trans
+                      &trans     &trans     &lt QW_LM TAB &kp LGUI   &trans       &trans     &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        cw_layer {
+            label = "Col Win";
+            bindings = <
+&trans     &trans     &kp F      &kp P      &kp B                                &kp J       &kp L      &kp U      &kp Y      &kp SEMI
+&trans     &kp R      &kp S      &kp T      &trans                               &kp M       &kp N      &kp E      &kp I      &kp O
+&trans     &trans     &trans     &kp D      &kp V       &trans      &mt GUIGRV   &kp K       &kp H      &trans     &trans     &trans
+                      &trans     &trans     &trans      &kp LCTRL   &trans       &trans      &trans     &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        cm_layer {
+            label = "Col Mac";
+            bindings = <
+&trans     &trans     &kp F      &kp P      &kp B                                &kp J       &kp L      &kp U      &kp Y      &kp SEMI
+&trans     &kp R      &kp S      &kp T      &trans                               &kp M       &kp N      &kp E      &kp I      &kp O
+&trans     &trans     &trans     &kp D      &kp V       &trans     &mt CTLGRV    &kp K       &kp H      &trans     &trans     &trans
+                      &trans     &trans     &trans      &kp LGUI   &trans        &trans     &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+                
+        gamepad_layer {
+            label = "Gampad";
+            bindings = <
+&kp Q      &kp W      &kp E    &kp R      &kp T                               &kp Y          &kp U      &kp I      &kp O      &kp P
+&kp A      &kp S      &kp D    &kp F      &kp G                               &kp H          &kp J      &kp K      &kp L      &kp SEMI
+&kp Z      &kp X      &kp C    &kp V      &kp B       &mt TBESC  &mt GUIGRV   &kp N          &kp M      &kp COMMA  &kp DOT    &kp FSLH
+                      &kp RET  &kp LSHIFT &kp SPACE   &kp LCTRL  &kp RALT     &kp BSPC       &kp RET    &to QW_M
+            >;
+
+            sensor-bindings = <&inc_dec_kp UP DOWN &inc_dec_kp LEFT RIGHT>;
         };
 
         raise_layer {
-            label = " Raise";
+            label = "Raise";
             bindings = <
 &kp HOME   &kp CTRLL  &kp UP     &kp CTRLR  &kp PG_UP                        &kp ASTRK  &kp N7     &kp N8     &kp N9     &kp PLUS
 &kp END    &kp LEFT   &kp DOWN   &kp RIGHT  &kp PG_DN                        &kp EQUAL  &kp N4     &kp N5     &kp N6     &kp MINUS
 &trans     &kp ALTL   &trans     &kp ALTR   &trans     &trans     &trans     &kp GRAVE  &kp N1     &kp N2     &kp N3     &kp BSLH
-                      &trans     &trans     &kp BSPC   &trans     &trans     &trans     &kp N0     &kp DOT
+                      &trans     &trans     &trans     &trans     &trans     &trans     &kp N0     &kp DOT
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
-        lower_layer {
-            label = " Lower";
+        lower_win_layer {
+            label = "Lower";
             bindings = <
-&bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4                          &trans     &tdw_LRP   &tdx_LRB   &tdx_LRR   &trans
-&kp EXCL   &kp AT     &kp HASH   &kp DLLR   &kp PRCNT                        &kp CARET  &kp AMPS   &kp ASTRK  &kp DQT    &kp QUOT
-&trans     &bt BT_CLR &trans     &trans     &trans     &kp LOCK   &trans     &enDSH_W   &emDSH_W   &trans     &trans     &kp BSLH
-                      &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
+&trans     &trans     &msc SCRL_UP   &kp WIN_SC &trans                           &tdx_LRR     &kp AMPS   &kp ASTRK  &trans      &kp DQT
+&trans     &mkp RCLK  &msc SCRL_DOWN &mkp LCLK  &trans                           &tdw_LRP     &kp DLLR   &kp PRCNT  &kp CARET   &kp QUOT
+&trans     &trans     &trans         &trans     &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
+                      &trans         &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
+        };
+
+        lower_mac_layer {
+            label = "Lower";
+            bindings = <
+&trans     &trans     &msc SCRL_UP   &kp MAC_SC &trans                           &tdx_LRR     &kp AMPS   &kp ASTRK  &trans      &kp DQT
+&trans     &mkp RCLK  &msc SCRL_DOWN &mkp LCLK  &trans                           &tdw_LRP     &kp DLLR   &kp PRCNT  &kp CARET   &kp QUOT
+&trans     &trans     &trans         &trans     &trans     &trans     &trans     &tdx_LRB     &kp EXCL   &kp AT     &kp HASH    &kp BSLH
+                      &trans         &trans     &trans     &trans     &trans     &trans     &trans     &trans
+            >;
+
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
         adjust_layer {
-            label = " Adjust";
+            label = "Adjust";
             bindings = <
 
-&kp F1     &kp F2     &kp F3     &kp F4     &kp F5                           &trans     &trans     &kp VOLUP  &trans     &kp WIN_SC
-&kp F6     &kp F7     &kp F8     &kp F9     &kp F10                          &trans     &trans     &kp VOLDN  &trans     &trans
-&kp F11    &kp F12    &trans     &trans     &trans     &trans     &trans     &trans     &kp VOLMT  &trans     &trans     &trans
+&bt BT0    &bt BT1    &bt BT2    &bt BT3    &bt BT4                          &trans     &kp F9     &kp F10    &kp F11    &kp F12
+&to CW_M   &to CM_M   &to QW_M   &to QM_M   &to QW_G                         &trans     &kp F5     &kp F6     &kp F7     &kp F8
+&trans     &trans     &trans     &trans     &trans     &bt BT_CLR &trans     &trans     &kp F1     &kp F2     &kp F3     &kp F4
                       &trans     &trans     &trans     &trans     &trans     &trans     &trans     &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOL_DN C_VOL_UP>;
+            sensor-bindings = <&scroll_up_down &inc_dec_kp C_VOL_UP C_VOL_DN>;
         };
 
     };
